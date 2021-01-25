@@ -21,6 +21,7 @@ public interface Club {
 	 */
 	public List<String> getNameOfMembers();
 	
+	
 	/*@  
 	 *@ ensures \result is the sum of all contributions across all members
 	 *@/
@@ -29,15 +30,18 @@ public interface Club {
 	 * 
 	 * @return the sum of total contributions across all members
 	 */
-	public int getTotalContributions();
+	public Double getTotalContributions();
+	
 	
 	/*@  
-	 *@ ensures the contributions of all members above the specified age was reduced by the specified amount
+	 *@ ensures the contributions of all members above the specified age was reduced by the specific amount
 	 *@/
 	/**
-	 * Applies a discount to all members above a certain age.
+	 * Applies a discount to all members above a certain age. 
+	 * Calling this method multiple times will provide a stacking discount.
 	 */
 	public void applyDiscount();
+	
 	
 	/*@  
 	 *@ ensures \result only contains all members with unpaid membership fees
@@ -48,7 +52,8 @@ public interface Club {
 	 * @return list of all members with outstanding fees
 	 */
 	public List<ClubMember> getMembersWithUnpaidFees();
-		
+	
+	
 	/*@  
 	 *@ ensures \result is the club member with the highest age value
 	 *@ ensures that if two or more members share the highest age value,
@@ -57,17 +62,19 @@ public interface Club {
 	/**
 	 * Searches the List of members for the oldest individual, alphabetical order acts as a tie-breaker.
 	 * 
+	 * @throws NoSuchElementException if there is no oldest member 
 	 * @return oldest member of this club
 	 */
 	public ClubMember getOldestMember();
+	
 	
 	/*@  
 	 *@ ensures \result is the exact list of member objects of this club
 	 *@/
 	/**
-	 * Getter Method for the member field
+	 * Getter Method for the member field.
 	 * 
-	 * @return list of members, this club possesses 
+	 * @return list of members, this club possesses
 	 */
 	public List<ClubMember> getMembers();
 	

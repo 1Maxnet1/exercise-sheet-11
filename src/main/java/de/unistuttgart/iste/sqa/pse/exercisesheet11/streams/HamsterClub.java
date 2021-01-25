@@ -12,7 +12,7 @@ import java.util.List;
 public class HamsterClub implements Club {
 
 	private final List<ClubMember> members;
-	private final Comparator<ClubMember> clubComparator;
+	private final Comparator<ClubMember> clubMemberComparator;
 	
 	public HamsterClub(final List<ClubMember> members) {
 		if(members != null) {
@@ -21,7 +21,7 @@ public class HamsterClub implements Club {
 			throw new IllegalArgumentException();
 		}
 		
-		this.clubComparator = generateComparator();
+		this.clubMemberComparator = generateComparator();
 	}
 	
 	
@@ -32,8 +32,8 @@ public class HamsterClub implements Club {
 	}
 
 	@Override
-	public int getTotalContributions() {
-		return 0;
+	public Double getTotalContributions() {
+		return 0.0;
 	}
 
 	@Override

@@ -17,22 +17,22 @@ public class HamsterClubTest {
 	public void setUp() {
 		ArrayList<ClubMember> members = new ArrayList<>();
 		
-		ClubMember c = new ClubMember("c", 10, 7, false);
+		ClubMember c = new ClubMember("c", 10, 7.0, false);
 		members.add(c);
 				
-		ClubMember b = new ClubMember("b", 23, 30, true);
+		ClubMember b = new ClubMember("b", 23, 30.0, true);
 		members.add(b);
 		
-		ClubMember a = new ClubMember("a", 70, 10, true);
+		ClubMember a = new ClubMember("a", 90, 10.0, true);
 		members.add(a);
 		
-		ClubMember e = new ClubMember("e", 90, 50, false);
+		ClubMember e = new ClubMember("e", 90, 50.0, false);
 		members.add(e);
 		
-		ClubMember d = new ClubMember("d", 40, 40, true);
+		ClubMember d = new ClubMember("d", 40, 40.0, true);
 		members.add(d);
 				
-		ClubMember f = new ClubMember("f", 55, 100, false);
+		ClubMember f = new ClubMember("f", 55, 100.0, false);
 		members.add(f);
 		
 		this.club = new HamsterClub(members);
@@ -47,7 +47,7 @@ public class HamsterClubTest {
 	
 	@Test
 	public void testGetTotalContributions(){
-		int expected = 237;
+		Double expected = 237.0;
 		
 		assertEquals(expected, club.getTotalContributions());
 		
@@ -56,11 +56,12 @@ public class HamsterClubTest {
 	@Test
 	public void testApplyDiscount(){
 		ArrayList<ClubMember> list = new ArrayList<>(club.getMembers());
-		Integer[] expected = new Integer[] {9,45};						
+				
+		Double[] expected = new Double[] {list.get(2).getContributions()*9/10, list.get(3).getContributions()*9/10};						
 				
 		club.applyDiscount();
 				 
-		Integer[] actual = new Integer[] {list.get(2).getContributions(), list.get(3).getContributions()};
+		Double[] actual = new Double[] {list.get(2).getContributions(), list.get(3).getContributions()};
 
 		assertArrayEquals(expected, actual);
 		
@@ -80,7 +81,7 @@ public class HamsterClubTest {
 	
 	@Test
 	public void testGetOldestMember(){
-		ClubMember expected = club.getMembers().get(3);
+		ClubMember expected = club.getMembers().get(2);
 		
 		assertEquals(expected, club.getOldestMember());
 	}

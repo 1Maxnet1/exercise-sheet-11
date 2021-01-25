@@ -1,17 +1,18 @@
 package de.unistuttgart.iste.sqa.pse.exercisesheet11.streams;
 
 /**
- * Individual member of a Club. @see {@link de.unistuttgart.iste.sqa.pse.exercisesheet11.streams.Club}
- * Do not modify.
+ * Individual member of a Club. 
+ * @see {@link de.unistuttgart.iste.sqa.pse.exercisesheet11.streams.Club}
+ * 
  */
 public class ClubMember implements Comparable<ClubMember> {
 	
 	private String name;
 	private int age;
-	private int contributions;
+	private Double contributions;
 	private boolean hasPaidFees;
 	
-	public ClubMember(String name, int age, int contributions, boolean hasPaidFees) {
+	public ClubMember(final String name, final int age, final Double contributions, final boolean hasPaidFees) {
 		this.name = name;
 		this.age = age;
 		this.contributions = contributions;
@@ -22,7 +23,7 @@ public class ClubMember implements Comparable<ClubMember> {
 	 * Overridden equals method to enable proper comparisons
 	 */
 	@Override
-	public boolean equals(Object obj) { 
+	public boolean equals(final Object obj) { 
 		  
         if (obj == this) { 
             return true; 
@@ -34,18 +35,22 @@ public class ClubMember implements Comparable<ClubMember> {
           
         ClubMember member = (ClubMember) obj; 
           
-        return member.getName().equals(this.getName()) &&
-        	   member.getAge() == this.getAge() &&
-        	   member.getContributions() == this.getContributions() &&
-        	   member.getHasPayedContributions() == this.getHasPayedContributions(); 
+        return member.getName().equals(name) &&
+        	   member.getAge() == age &&
+        	   member.getContributions() == contributions &&
+        	   member.getHasPaidContributions() == hasPaidFees; 
     } 
  
+	/**
+	 * Overridden compareTo method for use with clubMemberComparator
+	 */
 	@Override
-	public int compareTo(ClubMember arg0) {
+	public int compareTo(final ClubMember arg0) {
 		return this.age - arg0.getAge();
 	}
 		
 	
+	//Getter & Setter
 	public String getName() {
 		return name;
 	}
@@ -58,16 +63,16 @@ public class ClubMember implements Comparable<ClubMember> {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public int getContributions() {
+	public Double getContributions() {
 		return contributions;
 	}
-	public void setContributions(int contributions) {
+	public void setContributions(Double contributions) {
 		this.contributions = contributions;
 	}
-	public boolean getHasPayedContributions() {
+	public boolean getHasPaidContributions() {
 		return hasPaidFees;
 	}
-	public void setHasPayedContributions(boolean hasPaidFees) {
+	public void setHasPaidContributions(boolean hasPaidFees) {
 		this.hasPaidFees = hasPaidFees;
 	}
 
