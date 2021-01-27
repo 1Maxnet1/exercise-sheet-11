@@ -1,7 +1,7 @@
 package de.unistuttgart.iste.sqa.pse.exercisesheet11.calculator;
 
 /**
- * A Calculator that provides some a variety of mathematical operations. 
+ * A Calculator that provides some a variety of mathematical operations.
  */
 public interface Calculator {
 
@@ -18,9 +18,9 @@ public interface Calculator {
 	/**
 	 * calculate the sum of two integer values.
 	 * 
-	 * if the sum is greater than {@linkplain Integer#MAX_VALUE Integer.MAX_VALUE} an
-	 * overflow happens and if the sum is smaller than {@linkplain Integer#MIN_VALUE
-	 * Integer.MIN_VALUE} an underflow happens
+	 * if the sum is greater than {@linkplain Integer#MAX_VALUE Integer.MAX_VALUE}
+	 * an overflow happens and if the sum is smaller than
+	 * {@linkplain Integer#MIN_VALUE Integer.MIN_VALUE} an underflow happens
 	 * 
 	 * @param summand1 first summand
 	 * @param summand2 second summand
@@ -49,36 +49,53 @@ public interface Calculator {
 	 * @throws ArithmeticException if {@code divisor} is zero
 	 */
 	public int divide(int dividend, int divisor);
-	
-	
+
 	/**
 	 * Operations for exercise 3
 	 */
-	
+
+	/*
+	 * @ensures summand1 + summand2 <= Integer.MAX_VALUE && summand1 + summand2 >=
+	 * Integer.MIN_VALUE ==> \result summand1 + summand2
+	 * 
+	 * @signals (ArithmenticException e) \result > Integer.MAX_VALUE
+	 * 
+	 * @signals (ArithmenticException e) \result < Integer.MIN_VALUE
+	 * 
+	 */
 	/**
 	 * 
-	 * @ensures summand1 + summand2 < Integer.MAX_Value 
+	 * calculates the sum of two integer values
 	 * 
-	 * calculates the sum of two integer values 
-	 * 
-	 * if summand1 + summand2 < Integer.MAX_VALUE || summand1 + summand2 > Integer.MIN_VALUE  else throws an 
-	 * Arithmetic Exception is thrown
+	 * if the sum is greater than the integer range an ArithmeticException is thrown
+	 * with an Error Message. Which indicates that an Integer Overflow occured if
+	 * the sum is lesser than the integer range an ArithmeticException is thrown
+	 * with an Error Message. Which indicates that an Integer Underflow occured
 	 * 
 	 * @param summand1 first summand
 	 * @param summand2 second summand
 	 * 
-	 * @return sum of summand1 and summand2 
+	 * @return sum of summand1 and summand2
 	 * 
 	 */
-	public int addExact (final int summand1, final int summand2);
-	
-	
+	public int addExact(final int summand1, final int summand2);
+
+	/*
+	 * @ensures value >= 0 ==> \result == value
+	 * 
+	 * @ensures value < 0 ==> \result == value*-1
+	 * 
+	 * @signals (ArithmenticException e) \result == Integer.MIN_VALUE
+	 */
 	/**
-	 * calculates absolute value of a given integer or throws an Arithmetic Exception
+	 * calculates absolute value of a given integer value
+	 * 
+	 * if the value is equal to minimal Integer Value a Arithmetic Exception is
+	 * thrown because Integer.MIN_Value is not displayable as a positive number
 	 * 
 	 * @param integer value
-	 * @return absolute value 
+	 * @return absolute value
 	 */
-	public int abs (final int value);
+	public int abs(final int value);
 
 }
