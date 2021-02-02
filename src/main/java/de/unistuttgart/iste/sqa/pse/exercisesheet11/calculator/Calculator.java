@@ -58,10 +58,6 @@ public interface Calculator {
 	 * @ensures summand1 + summand2 <= Integer.MAX_VALUE && summand1 + summand2 >=
 	 * Integer.MIN_VALUE ==> \result summand1 + summand2
 	 * 
-	 * @signals (ArithmenticException e) \result > Integer.MAX_VALUE
-	 * 
-	 * @signals (ArithmenticException e) \result < Integer.MIN_VALUE
-	 * 
 	 */
 	/**
 	 * 
@@ -74,6 +70,9 @@ public interface Calculator {
 	 * 
 	 * @param summand1 first summand
 	 * @param summand2 second summand
+	 * @throws ArithmeticException if summand1 + summand2 are greater than
+	 *                             Integer.MAX_Value or summand1 + summand2 are
+	 *                             smaller than Integer.MIN_Value
 	 * 
 	 * @return sum of summand1 and summand2
 	 * 
@@ -81,11 +80,13 @@ public interface Calculator {
 	public int addExact(final int summand1, final int summand2);
 
 	/*
+	 * @requires value != Integer.MIN_Value
+	 * 
 	 * @ensures value >= 0 ==> \result == value
 	 * 
 	 * @ensures value < 0 ==> \result == value*-1
 	 * 
-	 * @signals (ArithmenticException e) \result == Integer.MIN_VALUE
+	 * 
 	 */
 	/**
 	 * calculates absolute value of a given integer value
@@ -95,6 +96,7 @@ public interface Calculator {
 	 * 
 	 * @param integer value
 	 * @return absolute value
+	 * @throws ArithmeticException if value is equal to Integer.Min_Value
 	 */
 	public int abs(final int value);
 
